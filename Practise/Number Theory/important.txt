@@ -1,0 +1,4 @@
+Bitwise Sieve of eratosthenes
+
+http://code.cloudkaksha.org/algorithm/bit-magic/bitwise-sieve-of-eratosthenes
+https://www.quora.com/What-is-bitwise-sieve

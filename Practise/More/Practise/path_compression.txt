@@ -1,0 +1,6 @@
+
+int root(int x) {   // for finding root in Disjoint set
+if (p[p[x]] != p[x])
+	p[x] = root(p[x]);
+return p[x];
+}

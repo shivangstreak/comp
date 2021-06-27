@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define pb push_back
+const int N=1e4+5;
+vector<int>v;
+void fact(int n){  // O(sqrt(n))
+	for(int i=2;i*i<=n;i++){
+		while(n%i==0){
+			v.pb(i);
+			n/=i;
+		}
+	}
+	if(n!=1){
+		v.pb(n);
+	}
+}
+int main(){
+	while(true){
+		v.clear();
+		int n;cin>>n;
+		fact(n);
+		for(auto x:v){
+			cout<<x<<" ";
+		}
+		cout<<endl;
+	}
+	return 0;
+}
+
+//At every step we are looking for a minimal prime number that divides our current N. This is the main idea of Sieve's modification.        Let's construct such array which in O(1) time will give us this number:
+
+int minPrime[n + 1];
+for(int i = 2; i * i <= n; ++i){
+    if (minPrime[i] == 0) { //if i is prime
+        for (int j = i * i; j <= n; j += i) {
+            if (minPrime[j] == 0) {
+                minPrime[j] = i;
+            }
+        }
+    }
+}
+for (int i = 2; i <= n; ++i) {
+    if (minPrime[i] == 0) {
+        minPrime[i] = i;
+    }
+}
+
+Now we can factorize N in O(log(N)) time using this modification:
+
+vector<int> factorize(int n) {
+    vector<int> res;
+    while (n != 1) {
+        res.push_back(minPrime[n]);
+        n /= minPrime[n];
+    }
+    return res;
+}
+
+Conditions: you can implement this modification only if you're allowed to create an array of integers with size N.
+
+Advices: this approach is useful when you need to factorize a lot of times some not very large numbers. It's not necessary to build such modified Sieve in every problem where you need to factorize something. Moreover you can't build it for such large N like 109 or 1012. So, use factorization in O(sqrt(N)) instead.
+
+Cool fact: if factorization of N is p1q1 * p2q2 * ... * pkqk then N has (q1 + 1) * (q2 + 1) * ... * (qk + 1) distinct divisors. 

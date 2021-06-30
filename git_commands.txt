@@ -3,3 +3,18 @@
 # How to push changes
 
 git push -u origin master
+
+# Remove remote
+git remote remove origin
+
+
+# How to make git tokens
+https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+
+# Add remote
+git remote add origin https://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@github.com/shivangstreak/comp.git
+
+
+# Pull code
+git pull https://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@github.com/shivangstreak/comp.git

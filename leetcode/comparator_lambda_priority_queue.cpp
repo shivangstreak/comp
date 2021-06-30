@@ -29,6 +29,35 @@ public:
 
 
 
+// Just see how priority queue has been used.
+// class Solution {
+// public:
+//     struct CompareFreq {
+//         bool operator()(pair<int,int> const& p1, pair<int,int> const& p2){
+//             return  p1.second > p2.second;
+//         }
+//     };
+//     vector<int> topKFrequent(vector<int>& nums, int k) {
+//         map<int,int>mp;
+//         vector<int> ans;
+//         for(int i=0;i<nums.size();i++){
+//             mp[nums[i]]++;
+//         }
+//         priority_queue<pair<int,int>,vector<pair<int,int>>,CompareFreq> pq;
+//         for(auto x:mp){
+//             pq.push(x);
+//             if(pq.size() > k){
+//                 pq.pop();
+//             }
+//         }
+//         while(pq.empty()==false){
+//             ans.push_back(pq.top().first);
+//             pq.pop();
+//         }
+//         return ans;
+//     }
+// };
+
 // min heap.
 // struct comp
 //     {

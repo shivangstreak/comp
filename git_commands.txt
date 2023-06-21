@@ -4,6 +4,12 @@
 
 git push -u origin master
 
+
+I Had sent GIT TOKEN mentioned here to your email of Soze on 21st June 2023 so take that token from there and insert it here.
+
+git push https://<INSERT_GIT_TOKEN>@github.com/shivangstreak/comp
+.git
+
 # Remove remote
 git remote remove origin
 
@@ -13,8 +19,29 @@ https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-
 
 
 # Add remote
-git remote add origin https://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@github.com/shivangstreak/comp.git
+git remote add origin https://<INSERT_GIT_TOKEN>@github.com/shivangstreak/comp.git
 
 
 # Pull code
-git pull https://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@github.com/shivangstreak/comp.git
+git pull https://<INSERT_GIT_TOKEN>@github.com/shivangstreak/comp.git
+
+
+NOTE FOR PUSHING
+
+.git/config file looked like this when I pushed LLD changes , 
+I changed https to ssh as explained in https://stackoverflow.com/questions/7438313/pushing-to-git-returning-error-code-403-fatal-http-request-failed
+So try that if git push is not working.
+
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+        ignorecase = true
+        precomposeunicode = true
+[remote "origin"]
+        url = ssh://github.com/shivangstreak/comp.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+        remote = origin
+        merge = refs/heads/master

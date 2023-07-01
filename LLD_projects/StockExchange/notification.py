@@ -17,6 +17,7 @@ class SmsNotification(Notification):
 
   def send_notification(self):
     # functionality
+    pass
 
 class EmailNotification(Notification):
   def __init__(self, notification_id, creation_date, content, email):

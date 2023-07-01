@@ -1,49 +1,55 @@
-# d = {}
-#
-# d[1]=2
-# d[4]=4
-#
-# print(d.items())
-#
-#
-# for i in sorted(d.items(), key=lambda x: x[1], reverse=True):
-#     print(i)
-#
-# print([2]*3)
+def find_pair(song_times):
+    durations = {}
 
-# f = "the services are as follows"
-# f = f.split()
-# print(f)
-# f = f[::-1]
-# print(f)
-#
-# print(' '.join(f))
+    for song, duration in song_times:
+        minutes, seconds = tuple(map(int, duration.split(':')))
+        total_seconds = minutes * 60 + seconds
+        if total_seconds not in durations:
+            durations[total_seconds] = []
+        durations[total_seconds].append(song)
 
-
-# for i in range(6,1,-1):
-#     print(i)
-
-# t = "5,6"
-# y=t.split(',')
-# a,b = y
-# a = int(a)
-# b = int(b)
-# print(type(a))
-# print(b)
-# from collections import defaultdict
-#
-# f = defaultdict(int)
-#
-# f[2]=99
-# f[3]="sss"
-# print(f)
+    for duration in durations:
+        complement = 420 - duration
+        if complement in durations:
+            if complement == duration:
+                if len(durations[duration]) > 1:
+                    return [durations[duration][0], durations[complement][1]]
+            else:
+                return [durations[duration][0], durations[complement][0]]
+    return []
 
 
-d = {}
+# Example usage:
+song_times_5 = [("Celebration Day", "3:30"), ("Going to California", "3:30")]
 
-d[1] = 1
-d[3] = "ASSS"
-
-for i in enumerate(d.keys()):
-    print(i)
-
+song_times_1 = [
+    ("Stairway to Heaven", "8:05"), ("Immigrant Song", "2:27"),
+    ("Rock and Roll", "3:41"), ("Communication Breakdown", "2:29"),
+    ("Good Times Bad Times", "2:48"), ("Hot Dog", "3:19"),
+    ("The Crunge", "3:18"), ("Achilles Last Stand", "10:26"),
+    ("Black Dog", "4:55")
+]
+song_times_2 = [
+    ("Stairway to Heaven", "8:05"), ("Immigrant Song", "2:27"),
+    ("Rock and Roll", "3:41"), ("Communication Breakdown", "2:29"),
+    ("Good Times Bad Times", "2:48"), ("Black Dog", "4:55"),
+    ("The Crunge", "3:18"), ("Achilles Last Stand", "10:26"),
+    ("The Ocean", "4:31"), ("Hot Dog", "3:19"),
+]
+song_times_3 = [
+    ("Stairway to Heaven", "8:05"), ("Immigrant Song", "2:27"),
+    ("Rock and Roll", "3:41"), ("Communication Breakdown", "2:29"),
+    ("Hey Hey What Can I Do", "4:00"), ("Poor Tom", "3:00"),
+    ("Black Dog", "4:55")
+]
+song_times_4 = [
+    ("Hey Hey What Can I Do", "4:00"), ("Rock and Roll", "3:41"),
+    ("Communication Breakdown", "2:29"), ("Going to California", "3:30"),
+    ("Black Mountain Side", "2:00"), ("Black Dog", "4:55")
+]
+song_times_5 = [("Celebration Day", "3:30"), ("Going to California", "3:30")]
+song_times_6 = [
+  ("Rock and Roll", "3:41"), ("If I lived here", "3:59"),
+  ("Day and night", "5:03"), ("Tempo song", "1:57")
+]
+print(find_pair(song_times=song_times_2))

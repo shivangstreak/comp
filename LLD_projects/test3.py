@@ -39,8 +39,11 @@
 # print(f)
 
 
-h = 2
-print(h%3)
+d = {}
 
+d[1] = 1
+d[3] = "ASSS"
 
+for i in enumerate(d.keys()):
+    print(i)
 

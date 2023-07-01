@@ -5,7 +5,7 @@
 git push -u origin master
 
 
-I Had sent GIT TOKEN mentioned here to your email of Soze on 21st June 2023 so take that token from there and insert it here.
+I Had sent GIT TOKEN mentioned here to your email of Soze on 21st June 2023 with subject "Github token" so take that token from there and insert it here.
 
 git push https://<INSERT_GIT_TOKEN>@github.com/shivangstreak/comp
 .git

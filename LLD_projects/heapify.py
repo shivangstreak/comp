@@ -13,5 +13,8 @@ wrapped_nums = [ElementWrapper(x) for x in nums]
 heapq.heapify(wrapped_nums)
 max_heap = [x.element for x in wrapped_nums]
 
-print(max_heap)  # Output: [7, 5, 4, 1, 2]
+#print(max_heap)  # Output: [7, 5, 4, 1, 2]
 
+while len(wrapped_nums) > 0:
+    x = heapq.heappop(wrapped_nums)
+    print(x.element)

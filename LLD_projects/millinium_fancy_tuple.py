@@ -12,7 +12,7 @@ class FancyTuple:
 
     def __len__(self):
         return len(self._data)
-    
+
 t = FancyTuple("dog", "cat", "bird")
 print(t.first)  # Output: dog
 print(t.second)  # Output: cat

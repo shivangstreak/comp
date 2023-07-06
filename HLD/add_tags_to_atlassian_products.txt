@@ -1,0 +1,76 @@
+Question:
+Atlassian has a number of different products, each containing different types of content. As an example, let’s look at four of our products:
+Jira - Issues
+Confluence - Web Pages
+BitBucket - Pull Request
+Trello - Board
+
+How would you add tags for related pages across all Atlassian products.
+How would you scale up the system to 100 Million tag requests a day.
+
+Approach:
+
+Identify the functional and non-functional requirements.
+Based on requirements specified
+Identify how would you store the data/DB to used.
+HLD: Identify the system components on a high-level and how will they interact with each other.
+
+
+
+Answer
+
+Firstly, let's outline the basic functional and non-functional requirements:
+
+Functional Requirements:
+1. Users should be able to add multiple tags to different types of content (e.g., issues, web pages, pull requests, boards).
+2. Users should be able to search for content using these tags.
+3. The system should be able to handle multiple requests simultaneously.
+
+Non-functional Requirements:
+1. The system should be able to handle up to 100 million tag requests per day.
+2. The system should be highly available. Any tag request failure can lead to poor user experience.
+3. Consistency can take a hit (eventual consistency is acceptable) which means users may not see the tagging reflected immediately across all services.
+4. The system should be easily scalable to handle more traffic or data.
+
+To store the data, a NoSQL database would be suitable. MongoDB, for instance, can handle large amounts of data and provide good performance for reading and writing the tag data. The document-oriented nature of MongoDB makes it easy to add and remove tags.
+
+We could store tags as a list of strings within each document (content item), like:
+
+```json
+{
+    "content_id": "123",
+    "content_type": "issue",
+    "tags": ["bug", "ui", "high-priority"],
+    // other content properties...
+}
+```
+
+Now, moving to the High-Level Design (HLD), here are the potential components we need:
+
+1. **User Interface (UI)**: This is where users interact with the system. It could be a web interface or desktop application integrated into each of Atlassian's products.
+
+2. **Application Servers**: This is where most of the business logic lives. When a user adds a tag to some content, the request is sent here. The server then communicates with the database to add the tag.
+
+3. **Database Servers**: This is where all data is stored. In our case, we are using MongoDB to store our data.
+
+4. **Search Server (Elasticsearch)**: To allow users to search content based on tags quickly, we can leverage Elasticsearch, which is particularly good at handling full-text searches and is compatible with MongoDB.
+
+5. **Message Queue (Kafka/RabbitMQ)**: For handling a large number of requests simultaneously and ensuring high availability, we can use a message queue. It would also provide a buffer if the system is overloaded.
+
+The flow would be as follows:
+
+- Users send tag requests through the UI.
+- The Application Server picks up this request and processes it.
+- The processed request is added to the Message Queue to ensure it isn't lost and can be processed even under heavy load.
+- The Database Server constantly listens to the Message Queue and updates the database as soon as it gets a request from the queue.
+- The Elasticsearch server constantly syncs data from the MongoDB server to update its indices.
+
+In terms of scaling, there are a few strategies we could use:
+
+1. **Horizontal Scaling (Sharding in MongoDB)**: We could partition our database across several servers, reducing the load on any single machine and allowing us to simply add more servers as our data grows.
+
+2. **Adding More Application Servers (Load Balancing)**: We could balance the load across multiple application servers using a load balancer. This would allow us to simply add more servers as the number of requests grows.
+
+3. **Caching (Redis/Memcached)**: We could use a caching system to store the result of common requests, reducing the load on our database and improving response times.
+
+Remember, this is a high-level design and actual implementation can vary based on various factors. Things like security, fault tolerance, monitoring, etc. also need to be considered for a full-scale production system.

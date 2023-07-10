@@ -37,5 +37,7 @@ class Address:
         self.__country = country
 
 
-print("yo")
+print("Trying out Enums")
 print(PaymentStatus.UNPAID)
+print(PaymentStatus.UNPAID.name)
+print(PaymentStatus.UNPAID.value)

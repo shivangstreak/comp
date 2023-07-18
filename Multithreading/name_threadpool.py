@@ -6,7 +6,7 @@ import threading
 # threads that execute the tasks. If you want to ensure that each task is executed by a
 # separate thread with a specific name, you might want to use the threading.Thread class directly:
 
-# please see naming_threads.py file to looking for mentioned implementation.
+# please see naming_threads_with_locking.py file to looking for mentioned implementation.
 
 #Todo THIS CODE DOES NOT WORK
 

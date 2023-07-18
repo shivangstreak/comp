@@ -1,0 +1,26 @@
+It seems like you're referring to the concepts of optimistic locking and pessimistic locking,
+which are strategies used in concurrency control in databases.
+
+Optimistic Locking: This strategy assumes that multiple transactions can complete without affecting each other,
+and therefore they are allowed to execute without acquiring locks on the database. However,
+before committing the transaction, the system checks if any conflicts could have occurred
+(i.e., if any other transactions have modified the data that the current transaction also wants to modify).
+If a conflict is detected, the system might abort the transaction and require it to retry,
+or it might use other resolution strategies. This approach is called optimistic because
+it is generally used when the likelihood of conflicts is relatively low.
+
+
+
+Pessimistic Locking: This strategy assumes that conflicts between transactions are likely.
+ Therefore, before a transaction is allowed to operate on data, it must first acquire a lock
+ that prevents other transactions from modifying the same data. This way, the risk of conflicts
+ is minimized. However, this can lead to lower concurrency (fewer transactions can execute simultaneously)
+ and there's a risk of deadlocks (where two or more transactions permanently block each other).
+ This approach is called pessimistic because it takes precautions to avoid conflicts on
+ the assumption that they are likely to occur.
+
+Each locking strategy has its own strengths and weaknesses and
+is more suited to certain types of applications.
+The choice between optimistic and pessimistic locking depends on the specific
+requirements of the system, including the frequency of conflicts, the cost of aborting and
+retrying transactions, the need for real-time responsiveness, and so on.

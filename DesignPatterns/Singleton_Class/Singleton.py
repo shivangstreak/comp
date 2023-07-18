@@ -35,10 +35,35 @@ class k:
         return f"{self.a} : {self.b}"
 
 p = k(1,2)
-l = k(4,5)
+l = k(9,8)
 
 print(l)
 if p==l:
     print("aaa")
+
+
+
+#
+# Using metaclass and __call__ instead of __new__
+#
+class Singleton(type):
+    _instances = {}
+
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+class Logger(metaclass=Singleton):
+    def __init__(self):
+        pass
+
+
+k = Logger()
+k1 = Logger()
+print(k==k1)
+
+
+
 
 

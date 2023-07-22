@@ -1,0 +1,99 @@
+Resources:-
+
+https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#get-methods
+https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md
+
+
+If the server doesn't support the media type, it should return HTTP status code 415 (Unsupported Media Type).
+If the server cannot match any of the media type(s) listed, it should return HTTP status code 406 (Not Acceptable).
+
+GET
+A successful GET method typically returns HTTP status code 200 (OK).
+If the resource cannot be found, the method should return 404 (Not Found).
+
+If the request was fulfilled but there is no response body included in the HTTP response,
+then it should return HTTP status code 204 (No Content);
+for example, a search operation yielding no matches might be implemented with this behavior.
+
+If paging has been used then for partial response HTTP status code 206 is returned
+DELETE
+
+f the delete operation is successful 200(ok),
+the web server should respond with HTTP status code 204 (No Content),
+ indicating that the process has been successfully handled,
+  but that the response body contains no further information.
+ If the resource doesn't exist, the web server can return HTTP 404 (Not Found).
+
+
+POST methods
+If a POST method creates a new resource, it returns HTTP status code 201 (Created).
+The URI of the new resource is included in the Location header of the response.
+The response body contains a representation of the resource.
+
+If the method does some processing but does not create a new resource,
+ the method can return HTTP status code 200 and include the result of the operation in the response body.
+ Alternatively, if there is no result to return, the method can return HTTP status code 204 (No Content)
+ with no response body.
+
+If the client puts invalid data into the request,
+the server should return HTTP status code 400 (Bad Request).
+The response body can contain additional information about the error or a link to a URI that provides more details.
+
+
+PUT methods
+If a PUT method creates a new resource, it returns HTTP status code 201 (Created),
+as with a POST method. If the method updates an existing resource,
+it returns either 200 (OK) or 204 (No Content). In some cases, it might not be possible to update an existing resource.
+In that case, consider returning HTTP status code 409 (Conflict).
+
+
+
+PATCH
+Here are some typical error conditions that might be encountered when processing a PATCH request,
+ along with the appropriate HTTP status code.
+
+Error condition	HTTP status code
+The patch document format isn't supported.	415 (Unsupported Media Type)
+Malformed patch document.	400 (Bad Request)
+The patch document is valid, but the changes can't be applied to the resource in its current state.	409 (Conflict)
+
+
+Asynchronous operations
+
+Sometimes a POST, PUT, PATCH, or DELETE operation might require processing that takes a while to complete.
+ If you wait for completion before sending a response to the client, it may cause unacceptable latency.
+  If so, consider making the operation asynchronous. Return HTTP status code 202 (Accepted)
+   to indicate the request was accepted for processing but is not completed.
+
+You should expose an endpoint that returns the status of an asynchronous request,
+so the client can monitor the status by polling the status endpoint.
+Include the URI of the status endpoint in the Location header of the 202 response. For example:
+HTTP/1.1 202 Accepted
+Location: /api/status/12345
+
+If the client sends a GET request to this endpoint,
+the response should contain the current status of the request.
+Optionally, it could also include an estimated time to completion or a link to cancel the operation.
+
+For example:
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "status":"In progress",
+    "link": { "rel":"cancel", "method":"delete", "href":"/api/status/12345" }
+}
+
+If the asynchronous operation creates a new resource,
+the status endpoint should return status code 303 (See Other) after the operation completes.
+In the 303 response, include a Location header that gives the URI of the new resource:
+For Example :
+HTTP/1.1 303 See Other
+Location: /api/orders/12345
+
+
+Empty sets in message bodies
+Any time the body of a successful response is empty, the status code should be 204 (No Content). For empty sets,
+ such as a response to a filtered request with no items, the status code should still be 204 (No Content), not 200 (OK).
+
+

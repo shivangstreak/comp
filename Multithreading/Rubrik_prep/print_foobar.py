@@ -1,4 +1,5 @@
 from threading import Lock, Semaphore
+# https://leetcode.com/problems/print-foobar-alternately/
 class FooBar:
     def __init__(self, n):
         self.n = n

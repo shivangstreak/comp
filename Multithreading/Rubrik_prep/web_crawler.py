@@ -8,6 +8,7 @@
 #        :type url: str
 #        :rtype List[str]
 #        """
+# https://leetcode.com/problems/web-crawler-multithreaded/
 from threading import Thread
 class Solution:
     def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> List[str]:

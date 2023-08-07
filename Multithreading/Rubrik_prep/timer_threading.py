@@ -51,6 +51,41 @@ class ScheduledExecutorService:
         timer.start()
         return timer
 
+# As an external function this is how it will look
+# import time
+# import threading
+#
+# def run_with_fixed_delay(command, delay_in_seconds):
+#     while True:
+#         command()
+#         time.sleep(delay_in_seconds)
+#
+# def scheduleWithFixedDelay(self, command, initialDelay, delay, unit):
+#     initial_delay_in_seconds = unit.to_seconds(initialDelay)
+#     delay_in_seconds = unit.to_seconds(delay)
+#
+#     timer = threading.Timer(initial_delay_in_seconds, run_with_fixed_delay, args=(command, delay_in_seconds))
+#     timer.start()
+#     return timer
+
+
+# Below code when command has many arguments
+# import time
+# import threading
+#
+# def run_with_fixed_delay(command, command_args, delay_in_seconds):
+#     while True:
+#         command(*command_args)
+#         time.sleep(delay_in_seconds)
+#
+# def scheduleWithFixedDelay(self, command, command_args, initialDelay, delay, unit):
+#     initial_delay_in_seconds = unit.to_seconds(initialDelay)
+#     delay_in_seconds = unit.to_seconds(delay)
+#
+#     timer = threading.Timer(initial_delay_in_seconds, run_with_fixed_delay, args=(command, command_args, delay_in_seconds))
+#     timer.start()
+#     return timer
+
 def print_hello():
     print("Hello, world!")
 

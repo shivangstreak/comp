@@ -3,6 +3,7 @@
 #
 from threading import Semaphore
 from typing import Callable
+# https://leetcode.com/problems/fizz-buzz-multithreaded/
 class FizzBuzz:
     def __init__(self, n: int):
         self.done = False        

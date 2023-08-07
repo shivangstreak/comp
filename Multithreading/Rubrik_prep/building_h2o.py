@@ -1,4 +1,5 @@
 from threading import Barrier, Semaphore
+# https://leetcode.com/problems/building-h2o/
 class H2O:
     def __init__(self):
         self.bar = Barrier(3)

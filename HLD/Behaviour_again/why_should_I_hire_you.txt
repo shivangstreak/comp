@@ -1,0 +1,48 @@
+Certainly! Given the details of your CV, here's a response tailored to the position you're applying for:
+
+---
+
+**Why You Should Hire Me for the Object Store Team at Oracle Cloud Infrastructure**
+
+1. **Deep Technical Expertise:** I bring a wealth of experience with varied programming languages
+like Python, Java, and C++. My in-depth knowledge of Windows Technologies,
+SQL Server Database, and my proficiency in using PowerShell will seamlessly
+complement the technical demands of the Object Store Team.
+
+2. **Extensive Experience with Cloud and Distributed Systems:**
+My years at Nutanix have provided me with hands-on experience in distributed systems
+and cloud technologies. The familiarity with tools like Azure and Docker positions me as a valuable asset,
+ ready to adapt and deliver on the OCI platform.
+
+3. **Proven Track Record with Data Management:**
+With my involvement in Nutanix NDB and having seen it grow from its alpha phase to ERA 2.5,
+I have firsthand experience in database management, backup, and restoration.
+The Object Storage's focus on secure data storage aligns perfectly with my background in managing crucial business data.
+
+4. **Team Leadership and Collaboration:**
+In my previous role, I successfully managed and mentored a team,
+overseeing product feature presentations, feedback sessions, and active participation in code reviews.
+My ability to lead, mentor, and work cross-functionally will be instrumental in driving the Object Store Team's success.
+
+5. **Customer-Centric Mindset:**
+During my time at Nutanix, attending customer calls and resolving issues in their
+environment was part of my responsibility. This has instilled in me a customer-first approach,
+ensuring the solutions I develop align with end-user requirements and solve real-world problems.
+
+6. **Experience with REST APIs and Microservices:**
+My involvement in developing and exposing REST APIs for NDB and my understanding of microservices
+make me well-suited to contribute to the Object Store's development, especially given its role in modern applications.
+
+7. **Strong Foundation in Data Structures and Algorithms:**
+My education from BITS Pilani, a renowned institution, has provided me with a
+robust foundation in data structures and algorithms. This knowledge, coupled with my practical experience, ensures that I approach challenges with both a theoretical and hands-on perspective.
+
+8. **Continuous Learning and Adaptability:**
+My journey from an intern at Nucleus Software to becoming a Member of Technical Staff 4
+at Nutanix within a few years showcases my dedication to learning, adaptability, and growth.
+
+In conclusion, my blend of technical skills, industry experience, and customer focus, paired with my enthusiasm for data management and cloud solutions, makes me an ideal fit for the Object Store Team at Oracle Cloud Infrastructure. I am eager to bring my expertise to the table and collaborate with the team to enhance and expand OCI's Object Storage offerings.
+
+---
+
+Good luck with your application!

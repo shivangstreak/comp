@@ -50,4 +50,7 @@ def solve():
 
 
 if __name__ == "__main__":
-    solve()
+    #solve()
+    a = [1,2,3,4,5]
+    for i in reversed(a):
+        print(i)

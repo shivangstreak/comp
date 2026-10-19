@@ -1,0 +1,57 @@
+1-minute version
+
+“I’m a backend engineer with about nine years of experience, mostly in storage and database infrastructure.
+
+I started at Nutanix in 2017 as one of the first six engineers on NDB, their database-as-a-service product,
+
+and saw it grow from alpha to major releases. Most of my six years there were on the SQL Server side: backup and
+
+
+restore with VSS and VDI, provisioning on Windows Storage Spaces, and Always On availability groups,
+
+
+plus a lot of customer escalations. I grew from MTS1 to MTS3.
+
+Since 2023 I’ve been at Oracle, working on the metadata services behind OCI Object Storage,
+
+a sharded, multi-tenant system at a much bigger scale. In my current role,
+
+I’ve owned a feature from design to production: per-bucket metrics for versioned data.
+
+I’ve also built Index Shrink, a lighter alternative to the index rebuilds that were disrupting our database shards,
+
+and adaptive rate limiting so lifecycle cleanup doesn’t overload the database.
+
+Now I’m looking for [your real reason], which is why this role interested me.”
+
+2-minute version
+
+“I’m a backend engineer, about nine years in, and most of my career has been in storage and databases.
+
+I joined Nutanix in 2017 and was lucky to be one of the first six engineers on NDB,
+their database-as-a-service product. I saw it go from an alpha to a product enterprise customers relied on,
+and I grew from MTS1 to MTS3 along the way. Being there from the start meant working across a lot of it: REST APIs and the early UI at first,
+
+then mostly the SQL Server team. That was very Windows- and storage-heavy work.
+
+I built backup and restore flows with VSS and VDI, partly in C++.
+
+I did provisioning on Storage Spaces and dynamic disks, storage extension, and Always On availability groups.
+I was also on a lot of customer calls, debugging problems in their environments, which taught me how things actually fail in production.
+
+Since 2023 I’ve been at Oracle, on OCI Object Storage’s metadata services.
+
+It was a deliberate shift from database deployments inside a customer’s environment to a sharded, multi-tenant system at hyperscaler scale.
+
+The project I’m proudest of in my current role is one I owned from design to production: per-bucket metrics that show customers
+
+how much storage their old object versions use. The key decision was to compute them from existing data rather than change
+
+the critical write path, and to make publishing fail-safe so it never shows partial numbers.
+
+I’ve also built Index Shrink, which replaced disruptive full index rebuilds with a lighter in-place approach for most cases,
+
+and adaptive rate limiting so large lifecycle cleanups don’t overload our database shards.
+
+What I enjoy most is the hard part of storage: keeping data correct when things fail, and protecting shared capacity.
+Next I’m looking for [your real reason], and that’s what drew me to this role.”

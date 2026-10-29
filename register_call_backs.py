@@ -1,34 +1,43 @@
 import threading
 
-class Events:
+
+class Event:
     def __init__(self):
-        self._call_backs = []
-        self._event_called = False
+        self._callbacks = []
+        self._fired = False
         self._lock = threading.Lock()
 
-    def event_run(self):
+    def register_callback(self, cb):
         with self._lock:
-            self._event_called = True
-            to_call = self._call_backs
-            self._call_backs = []
-            for cb in to_call:
-                self._safe_calls(cb)
-            return
-
-    def register_call_backs(self, cb):
-        with self._lock:
-            if not self._event_called:
-                self._call_backs.append(cb)
+            if not self._fired:
+                self._callbacks.append(cb)
                 return
-        # Since event was called before so we should call this immediately  
-        self._safe_calls(cb)
+        # Event already fired: invoke immediately (outside the lock)
+        self._safe_call(cb)
 
-    def _safe_calls(self, cb):
+    def event_fired(self):
+        with self._lock:
+            if self._fired:          # idempotent
+                return
+            self._fired = True
+            to_call = self._callbacks
+            self._callbacks = []     # release references
+        # Call outside the lock so a callback can safely call register_callback
+        for cb in to_call:
+            self._safe_call(cb)
+
+    @staticmethod
+    def _safe_call(cb):
         try:
             cb()
-        except Exception as ex:
-            print(f'Exception has occured {ex}')
+        except Exception as e:        # one bad listener must not break others
+            print(f"callback {cb} failed: {e}")
 
-if __name__ == '__main__':
-    ev = Events()
 
+# Demo matching the diagram
+if __name__ == "__main__":
+    ev = Event()
+    ev.register_callback(lambda: print("cb1"))
+    ev.register_callback(lambda: print("cb2"))
+    ev.event_fired()                          # prints cb1, cb2
+    ev.register_callback(lambda: print("cb3"))  # prints cb3 immediately

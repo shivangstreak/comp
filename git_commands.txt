@@ -10,6 +10,10 @@ I Had sent GIT TOKEN mentioned here to your email of Soze on 21st June 2023 with
 git push https://<INSERT_GIT_TOKEN>@github.com/shivangstreak/comp
 .git
 
+
+new token sent again on 4th Nov 2026 check email subject git hub
+
+
 # Remove remote
 git remote remove origin
 
